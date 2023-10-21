@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+nav {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 50px;
+    position: fixed;
+    background-image: linear-gradient(#71b7e6, #9b59b6);
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    z-index: 999;
+}
+
+nav .logo p {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    position: fixed;
+    margin: 0;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    display: inline-block;
+    list-style: none;
+    margin-right: 20px;
+}
+
+nav li:last-child {
+    margin-right: 0;
+}
+
+nav li a {
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 0 10px;
+    color: white;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    color: #ff8c69;
+    transition: all 0.4s ease 0s;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin-top: 75px;
+    justify-content: center;
+    align-items: center;
+    padding: 75px 50px;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #aacce3, #e577cf);
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+}
+
+.container .title {
+    font-size: 30px;
+    font-weight: 500;
+    position: relative;
+    font-weight: bold;
+    text-align: left;
+    color: rgb(66, 63, 63);
+}
+
+.container .title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+}
+
+
+.button {
+    margin: 45px 0;
+}
+
+.button a {
+    text-decoration: none; 
+    margin-bottom: 15px;
+}
+.button div:not(:first-child) {
+    margin-top: 10px; 
+}
+.button input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    cursor: pointer;
+    margin-top: 10px;
+    margin-top: 0;
+}
+
+.button input:hover {
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+}
+
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <p>erp</p>
+        </div>
+        <ul>
+            <!-- <li><a href="/home/">Home</a></li> -->
+        </ul>
+    </nav>
+
+    <!-- <div class="container">
+        <div class="title">Inventory</div>
+
+
+        <div class="button">
+
+            <div>
+                <a href="/stock/">
+                    <input type="submit" value="Add Stock">
+                </a>
+            </div>
+
+            <div>
+                <a href="/supplier/">
+                    <input type="submit" value="Add Supplier">
+                </a>
+            </div>
+
+            <div>
+                <a href="/list/supplier/">
+                    <input type="submit" value="List Of Supplier">
+                </a>
+            </div>
+
+            <div>
+                <a href="/list/stock/">
+                    <input type="submit" value="List Of Stock">
+                </a>
+            </div>
+
+            <div>
+                <a href="/stock-supplier/">
+                    <input type="submit" value="Stock & supplier control card">
+                </a>
+            </div>
+
+            <div>
+                <a href="/stock-control/">
+                    <input type="submit" value="Stock control">
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+</body> -->
+
+</html>

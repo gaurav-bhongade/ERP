@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier list</title>
+
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif; /* Facebook primarily uses Arial or Helvetica */
+    background-color: #f0f2f5; /* Facebook's background color */
+}
+
+nav {
+  width: 100%;
+  height: 56px; /* Facebook navigation bar height */
+  padding: 0 20px;
+  position: fixed;
+  background-color: #1877f2; /* Facebook blue color */
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+}
+
+nav .logo p {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav li {
+  list-style: none;
+}
+
+nav li a {
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 15px 20px; /* Increased padding */
+  color: white;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: #166fe5; /* Darker blue on hover */
+  border-radius: 8px; /* Rounded corners on hover */
+}
+
+h2 {
+    font-size: 28px; /* Larger heading */
+    color: #3b5998; /* Facebook's blue color */
+}
+
+table {
+    width: 60%; /* Slightly larger table */
+    margin: 20px auto; /* Center the table */
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px; /* Slightly larger padding */
+    text-align: left;
+}
+
+th {
+    background-color: #3b5998;
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Alternate row background color */
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1; /* Hover effect */
+}
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+          <p>inventory management system</p>
+        </div>
+        <ul>
+          <li><a href="/home/">Home</a></li>
+        </ul>
+      </nav><br><br><br><br>
+
+    <h2>{{ supplier.name }}</h2>
+    
+    <table>
+        <tbody>
+                
+                <tr>
+                    <th>Address</th>
+                    <td>{{ supplier.address }}</td>
+                </tr>
+                <tr>
+                    <th>Location</th>
+                    <td>{{ supplier.location }}</td>
+                </tr>
+                <tr>
+                    <th>Contact</th>
+                    <td>{{ supplier.contact }}</td>
+                </tr>
+                <tr>
+                    <th>Stock Name</th>
+                    <td>{{ supplier.stock_name }}</td>
+                </tr>
+                <tr>
+                    <th>GST Number</th>
+                    <td>{{ supplier.gst_no }}</td>
+                </tr>
+                <tr>
+                    <th>Rating</th>
+                    <td>{{ supplier.get_rating_display }}</td>
+                </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,305 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Stock</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+nav {
+  width: 100%;
+  height: 56px; /* Facebook navigation bar height */
+  padding: 0 20px;
+  position: fixed;
+  background-color: #1877f2; /* Facebook blue color */
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+}
+
+nav .logo p {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav li {
+  list-style: none;
+}
+
+nav li a {
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 15px 20px; /* Increased padding */
+  color: white;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: #166fe5; /* Darker blue on hover */
+  border-radius: 8px; /* Rounded corners on hover */
+}
+
+.container {
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 80px; /* Adjusted margin-top to avoid overlap with the navbar */
+}
+
+.container .title {
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+    color: #3b5998;
+}
+
+.container .title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+.container form .user-details .details {
+    color: #3b5998;
+}
+
+.container form .user-details .input-box {
+    margin-bottom: 20px;
+}
+
+.container form .user-details .input-box .details {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #3b5998;
+}
+
+.container form .user-details .input-box input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.container form .user-details .input-box input:focus {
+    border-color: #3b5998;
+}
+
+.container form .user-details .marital-box {
+    margin-bottom: 20px;
+}
+
+.container form .user-details .marital-box .details {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #3b5998;
+}
+
+.container form .user-details .marital-box select.dd {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.container form .user-details .marital-box select.dd:focus,
+.container form .user-details .marital-box select.dd:valid {
+    border-color: #3b5998;
+}
+
+.container form .button {
+    margin: 25px 0;
+}
+
+.container form .button input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    background: #3498db; /* Blue color */
+    cursor: pointer;
+}
+
+.container form .button input:hover {
+    background: #2980b9; /* Darker blue on hover */
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 0 10px;
+    }
+
+    nav ul {
+        text-align: center;
+        margin-top: 10px;
+        align-items: flex-end;
+    }
+
+    nav li {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    form {
+        margin-top: 80px;
+    }
+}
+
+    </style>
+    
+</head>
+<body>
+
+  
+  <nav>
+    <div class="logo">
+      <p>inventory management system</p>      
+    </div>
+    <ul>
+      <li><a href="/home/">Home</a></li>
+    </ul>
+  </nav>
+    
+
+  <div class="container">
+  <div class="title">Enter Stock Information</div>
+
+    <!-- <div class="click">
+    <button><a href="/home/">HOME</a></button>
+    </div> -->
+
+    <!-- <form action="save/" method="post"> -->
+    <form action="/save/" method="post">
+
+      {% csrf_token %}
+      <div>
+        <span class="details">{{ result }}</span>
+      </div>
+
+      <div class="user-details">
+        
+
+        <div class="input-box">
+          <span class="details">Name<span style="color: red"> *</span></span>
+          <input type="text" placeholder="Enter Stock Name" name="name" required>
+        </div>
+
+        <div class="input-box">
+          <span class="details">Description<span style="color: red"> *</span></span>
+          <input type="text" placeholder="Enter stock description" name="description" required>
+        </div>
+            
+        <div class="input-box">
+          <span class="details">Minimum Quintity Required<span style="color: red"> *</span></span>
+          <input type="text" placeholder="Enter min qty required" name="minqty_required" required>
+        </div>
+      
+        <div class="input-box">
+          <span class="details">Maximum Quintity Required<span style="color: red"> *</span></span>
+          <input type="text" placeholder="Enter max qty req" name="maxqty_required" required>
+        </div>
+            
+        <div class="input-box">
+          <span class="details">Cost Per Unit<span style="color: red"> *</span></span>
+          <input type="text" placeholder="Enter Cost" name="cost_per_unit" required>
+        </div>
+         
+
+        <div class="marital-box">
+          <label for="marital-status" class="details">Usage Level<span style="color: red"> *</span></label>
+          <select name="usage_level" id="usage_level" class="dd" required>
+            <option value="" disabled selected>Select Usage Level</option>
+            <option value="Low level">Low level</option>
+            <option value="Mid level">Mid level</option>
+            <option value="High level">High level</option>
+          </select>
+      </div>
+    
+        <div class="marital-box">
+          <label for="marital-status" class="details">Reorder Duration<span style="color: red"> *</span></label>
+          <select name="reorder_duration" id="reorder_duration" class="dd" required>
+              <option value="" disabled selected>Select Reorder Duration</option>
+              <option value="1 week">1 week</option>
+            <option value="3-4 days">3-4 days</option>
+            <option value="1-2 days">1-2 days</option>
+          </select>
+      </div>
+
+
+      <div class="marital-box">
+        <label for="marital-status" class="details">Supplier<span style="color: red"> *</span></label>
+        <select name="suppliers" id="suppliers" class="dd" required>
+          <option value=""class"dd-font"  disabled selected>Select Supplier</option>
+          {% for supplier in suppliers %}
+          <option value="{{supplier.id}}">{{supplier.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      
+      </div>
+      <div class="button">
+        <input type="submit" value="Click to Submit">
+      </div>
+     
+    </form>
+  </div>
+</body>
+</html>
+
+
+
+  

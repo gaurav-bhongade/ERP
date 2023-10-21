@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock and supplier control</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        nav {
+  width: 100%;
+  height: 56px; /* Facebook navigation bar height */
+  padding: 0 20px;
+  position: fixed;
+  background-color: #1877f2; /* Facebook blue color */
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+}
+
+nav .logo p {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav li {
+  list-style: none;
+}
+
+nav li a {
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 15px 20px; /* Increased padding */
+  color: white;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: #166fe5; /* Darker blue on hover */
+  border-radius: 8px; /* Rounded corners on hover */
+}
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #1c1e21;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        label {
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        select {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        #show_details_button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #show_details_button:hover {
+            background-color: #0e5a8a;
+        }
+
+        .details-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .details-container>div {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            width: 45%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            white-space: normal;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            width: fit-content;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        hr {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+          <p>inventory management system</p>
+        </div>
+        <ul>
+          <li><a href="/home/">Home</a></li>
+        </ul>
+      </nav><br><br><br>
+
+    <h2>Combined Details</h2><br>
+
+    <div>
+        <form method="post" action="/stock-supplier/">
+            {% csrf_token %}
+            <label for="stock_selector">Select a Stock:</label>
+            <select name="stock_selector" id="stock_selector">
+                {% for stock in stocks %}
+                <option value="{{ stock.id }}">{{ stock.name }} ({{ stock.supplier_id.name }})</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Show Details" id="show_details_button">
+        </form>
+    </div><br><br>
+
+    {% if selected_stock %}
+    <div class="details-container">
+        
+        <div>
+
+            <h3>Stock Details</h3>
+            
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <td>{{ selected_stock.name }} </td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ selected_stock.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Min Quentity req</th>
+                        <td>{{ selected_stock.minqty_required }}</td>
+                    </tr>
+                    <tr>
+                        <th>Max Quentity req</th>
+                        <td>{{ selected_stock.maxqty_required }}</td>
+                    </tr>
+                    <tr>
+                        <th>Cost</th>
+                        <td>{{ selected_stock.cost_per_unit }}</td>
+                    </tr>
+                    <tr>
+                        <th>Usage Level</th>
+                        <td>{{ selected_stock.usage_level }}</td>
+                    </tr>
+                    <tr>
+                        <th>Reorder Duration</th>
+                        <td>{{ selected_stock.reorder_duration }}</td>
+                    </tr>
+                    <tr>
+                        <th>Supplier ID</th>
+                        <td>{{ selected_stock.supplier_id_id }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h3>Supplier Details</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <td>{{ selected_supplier.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Address</th>
+                        <td>{{ selected_supplier.address }}</td>
+                    </tr>
+                    <tr>
+                        <th>Location</th>
+                        <td>{{ selected_supplier.location }}</td>
+                    </tr>
+                    <tr>
+                        <th>Contact</th>
+                        <td>{{ selected_supplier.contact }}</td>
+                    </tr>
+                    <tr>
+                        <th>Stock Name</th>
+                        <td>{{ selected_supplier.stock_name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Cost Per Unit</th>
+                        <td>{{ selected_supplier.gst_no }}</td>
+                    </tr>
+                    <tr>
+                        <th>Rating</th>
+                        <td>{{ selected_supplier.get_rating_display }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+    <hr>
+</body>
+
+</html>

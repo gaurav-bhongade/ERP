@@ -1,0 +1,433 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signup</title>
+  <link rel="stylesheet" href="static/signup-style.css" />
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+nav {
+  width: 100%;
+  height: 56px; /* Facebook navigation bar height */
+  padding: 0 20px;
+  position: fixed;
+  background-color: #1877f2; /* Facebook blue color */
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+}
+
+nav .logo p {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav li {
+  list-style: none;
+}
+
+nav li a {
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 15px 20px; /* Increased padding */
+  color: white;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: #166fe5; /* Darker blue on hover */
+  border-radius: 8px; /* Rounded corners on hover */
+}
+
+body {
+            margin-top: 75px;
+            padding: 0 20px; /* Adjusted padding */
+            background: #f0f2f5; /* Facebook background color */
+        }
+
+        .container {
+            max-width: 600px; /* Adjusted max-width */
+            width: 100%;
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Added box shadow */
+            margin: 0 auto;
+        }
+
+.container .title {
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: left;
+  color: #1c1e21; /* Dark text color */
+}
+
+.container .title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  background-color: #1877f2; /* Darker blue color */
+}
+
+.container form {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+}
+
+.container form .user-details {
+  margin: 20px 0;
+}
+
+.container form .user-details .input-box input,
+.container form .user-details .marital-box select.dd {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding-left: 15px;
+  font-size: 16px;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+  background: #f0f2f5; /* Light gray background */
+}
+
+.container form .user-details .input-box input:focus,
+.container form .user-details .marital-box select.dd:focus,
+.container form .user-details .marital-box select.dd:valid {
+  border-color: #1877f2; /* Darker blue color on focus/valid */
+}
+
+.container form .user-details .input-box input,
+.container form .user-details .marital-box select.dd,
+.container form .user-details .marital-box select.dd:valid {
+  background: #fff; /* White background */
+}
+
+.container form .user-details .input-box input::placeholder,
+.container form .user-details .marital-box select.dd::placeholder {
+  color: #ccc; /* Placeholder color */
+}
+
+.container form .button {
+  height: 45px;
+  margin: 45px 0;
+}
+
+.container form .button input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  background: #1877f2; /* Facebook's blue color */
+  cursor: pointer;
+}
+
+.container form .button input:hover {
+  background: #0e5a8a; /* Darker blue color on hover */
+}
+
+@media (max-width: 584px) {
+  .container {
+    max-width: 100%;
+  }
+  form .user-details .input-box {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  .container form .user-details {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .user-details::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding: 0px 10px;
+  }
+  nav ul {
+    float: none;
+    text-align: center;
+    margin-top: 10px;
+  }
+  nav li {
+    display: block;
+    margin-bottom: 10px;
+  }
+  form {
+    margin-top: 75px;
+  }
+}
+
+
+</style>
+</head>
+
+<body>
+  <nav>
+    <div class="logo">
+      <p>inventory management system</p>
+    </div>
+    <ul>
+      <!-- <li><a href=""></a></li>
+        <li><a href=""></a></li> -->
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="title">Sign Up Here</div>
+
+    <form action="/signup/" method="post"> <br>
+      {% csrf_token %}
+      <!-- <div>
+        {% if messages %}
+  <span class="messages">
+    {% for message in messages %}
+      <p style="color: red;">{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+    {% endfor %}
+  </span>
+{% endif %}
+    </div> -->
+
+      {% if messages %}
+      <div>
+        {% for message in messages %}
+        <p>{{ message.message }}</p>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div>
+        <span class="details" style="color: red;">{{ result }}</span>
+      </div>
+
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details">Name<span style="color: red"> *</span></span>
+          <input type="text" placeholder="Enter Your Name" name="name" id="name" required />
+        </div>
+
+        <div class="input-box">
+          <span class="details">Email<span style="color: red"> *</span></span>
+          <input type="email" placeholder="Enter your Email" name="email" id="email" required />
+        </div>
+
+        <div class="input-box">
+          <span class="details">Password<span style="color: red"> *</span></span>
+          <input type="password" placeholder="Enter Password" id="password1" name="password1" required />
+        </div>
+
+        <div class="input-box">
+          <span class="details">Confirm Password<span style="color: red"> *</span></span>
+          <input type="password" placeholder="Confirm password" id="password2" name="password2" required />
+        </div>
+
+        <!-- <div class="input-box">
+          <span class="details">Security question<span style="color: red"> *</span></span>
+          <input type="text" placeholder="Security question" id="security_question" name="security_question" required />
+        </div> -->
+
+        <div class="marital-box">
+          <label for="marital-status" class="details">Security question<span style="color: red"> *</span></label>
+          <select name="security_question" id="security_question" class="dd" required>
+            <option value="" disabled selected>Select Security question</option>
+            <option value="Favourite colour">Favourite colour</option>
+            <option value="Favourite teacher">Favourite teacher</option>
+            <option value="Blood Group">Blood Group</option>
+            <option value="Pet name">Pet name</option>
+            <option value="Favourite fruit">Favourite fruit</option>
+            <option value="Favourite City">Favourite City</option>
+          </select>
+        </div>
+
+        <div class="input-box">
+          <span class="details">Answer<span style="color: red"> *</span></span>
+          <input type="text" placeholder="Answer" id="security_answer" name="security_answer" required />
+        </div>
+
+        <div class="input-box">
+          <span class="details">Contact<span style="color: red"> *</span></span>
+          <input type="text" placeholder="Enter Your Contact" name="contact" id="contact" required />
+        </div>
+
+        <div class="input-box">
+          <span class="details">DOB<span style="color: red"> *</span></span>
+          <input type="date" placeholder="Enter Your Date of birth" name="dob" id="dob" required />
+        </div>
+
+        <div class="input-box">
+          <span class="details">Address<span style="color: red"> *</span></span>
+          <input type="text" placeholder="Enter Your Address" name="address" id="address" required />
+        </div>
+
+        <div class="input-box">
+          <span class="details">Aadhaar<span style="color: red"> *</span></span>
+          <input type="text" placeholder="Enter Your Addhar Number" name="aadhaar" id="aadhaar" required />
+        </div>
+
+        <!-- <div class="input-box">
+            <span class="details">marital_status<span style="color: red"> *</span></span>
+            <input type="text" placeholder="Select your marital status" name="marital_status" id="marital_status" required />
+        </div> -->
+
+        <div class="marital-box">
+          <label for="marital-status" class="details">Marital Status<span style="color: red"> *</span></label>
+          <select name="marital_status" id="marital_status" class="dd" required>
+            <option value="" disabled selected>Select Marital Status</option>
+            <option value="single">Single</option>
+            <option value="married">Married</option>
+            <option value="divorced">Divorced</option>
+            <option value="widowed">Widowed</option>
+          </select>
+        </div>
+
+        <div class="input-box">
+          <span class="details">spouse_name</span>
+          <input type="text" placeholder="Enter Your Spause Name" name="spouse_name" id="spouse_name" />
+        </div>
+
+        <!-- <div class="input-box">
+            <span class="details">Department<span style="color: red"> *</span></span>
+            <input type="text" placeholder="Select Your Department" name="department" id="department" required />
+        </div> -->
+
+        <div class="marital-box">
+          <label for="marital-status" class="details">Department<span style="color: red"> *</span></label>
+          <select name="department" id="department" class="dd" required>
+            <option value="" disabled selected>Select Department</option>
+            <option value="Accounts">Accounts</option>
+            <option value="HR">HR</option>
+            <option value="Developement">Developement</option>
+            <option value="Testing">Testing</option>
+          </select>
+        </div>
+
+        <!-- <div class="input-box">
+          <span class="details">Depart Manager<span style="color: red"> *</span></span>
+          <input type="text" placeholder="Select Your Dept Manager" name="dpt_manager" id="dpt_manager" required />
+        </div> -->
+
+        <div class="marital-box">
+          <label for="marital-status" class="details">Department Manager<span style="color: red"> *</span></label>
+          <select name="dpt_manager" id="dpt_manager" class="dd" required>
+            <option value="" disabled selected>Select Department Manager</option>
+            <option value="Gaurav">Gaurav</option>
+            <option value="Shubham">Shubham</option>
+            <option value="Ganvir">Ganvir</option>
+            <option value="Pratik">Pratik</option>
+          </select>
+        </div>
+
+        <!-- <div class="input-box">
+            <span class="details">qualification<span style="color: red"> *</span></span>
+            <input type="text" placeholder="Select Your Qualification" name="qualification" id="qualification" required />
+        </div> -->
+
+        <div class="marital-box">
+          <label for="marital-status" class="details">Qualification<span style="color: red"> *</span></label>
+          <select name="qualification" id="qualification" class="dd" required>
+            <option value="" disabled selected>Select Qualification</option>
+            <option value="Engineer">Engineer</option>
+            <option value="BSC">BSC</option>
+            <option value="BA">BA</option>
+            <option value="MBA">MBA</option>
+          </select>
+        </div>
+
+        <!-- <div class="input-box">
+            <span class="details">Designation<span style="color: red"> *</span></span>
+            <input type="text" placeholder="Select Your Designation" name="designation" id="designation" required />
+        </div> -->
+
+        <div class="marital-box">
+          <label for="marital-status" class="details">Designation<span style="color: red"> *</span></label>
+          <select name="designation" id="designation" class="dd" required>
+            <option value="" disabled selected>Select Designation</option>
+            <option value="Developer">Developer</option>
+            <option value="Tester">Tester</option>
+            <option value="Manager">Manager</option>
+            <option value="BA">BA</option>
+            <option value="Analyst">Analyst</option>
+          </select>
+        </div>
+
+        <div class="input-box">
+          <span class="details">Grade Pay</span>
+          <input type="text" placeholder="Enter Your Grade Pay" name="grade_pay" id="grade_pay" />
+        </div>
+
+        <div class="input-box">
+          <span class="details">Basic Pay</span>
+          <input type="text" placeholder="Enter Your Basic Pay" name="basic_pay" id="basic_pay" />
+        </div>
+
+        <div class="input-box">
+          <span class="details">Taxation</span>
+          <input type="text" placeholder="Enter Your Taxation" name="taxation" id="taxation" />
+        </div>
+
+        <!-- <div class="input-box">
+            <span class="details">Project<span style="color: red"> *</span></span>
+            <input type="text" placeholder="Select Your Project" name="project" id="project" required />
+        </div> -->
+
+        <div class="marital-box">
+          <label for="marital-status" class="details">Project<span style="color: red"> *</span></label>
+          <select name="project" id="project" class="dd" required>
+            <option value="" disabled selected>Select Your Project</option>
+            <option value="CRM">CRM</option>
+            <option value="ERP">ERP</option>
+            <option value="IMS">IMS</option>
+            <option value="OMS">OMS</option>
+            <option value="WMS">WMS</option>
+            <option value="Ecommerce">Ecommerce</option>
+          </select>
+        </div>
+
+      </div>
+      <div class="button">
+        <input type="submit" value="Click to Register" />
+      </div>
+      <a href="{% url 'login' %}">I already have an account</a>
+    </form>
+  </div>
+</body>
+
+</html>
