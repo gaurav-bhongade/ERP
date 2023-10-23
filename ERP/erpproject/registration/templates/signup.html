@@ -20,7 +20,7 @@ nav {
   height: 56px; /* Facebook navigation bar height */
   padding: 0 20px;
   position: fixed;
-  background-color: #1877f2; /* Facebook blue color */
+  background-color: rgba(66, 103, 178, 0.8);
   top: 0;
   left: 0;
   right: 0;
@@ -63,19 +63,34 @@ nav li a:hover {
 }
 
 body {
-            margin-top: 75px;
-            padding: 0 20px; /* Adjusted padding */
-            background: #f0f2f5; /* Facebook background color */
+  background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 60px 20px;
+    background-image: url('{% static "/Images/inv1.jpg" %}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
         }
 
         .container {
-            max-width: 600px; /* Adjusted max-width */
-            width: 100%;
-            background: #fff;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Added box shadow */
-            margin: 0 auto;
+          max-width: 550px;
+          width: 100%;
+          background: rgba(111, 109, 109, 0.114);
+          padding: 25px 20px;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          margin-top: 80px; /* Adjusted margin-top to avoid overlap with the navbar */
+          margin: 20px 20px 20px auto; /* Adjusted margin for spacing and centered the container */
+          height: 85vh;
+          max-height: 80vh; /* Adjusted max-height */
+          overflow-y: auto; 
+          margin-left: auto;
         }
 
 .container .title {
@@ -85,7 +100,7 @@ body {
   font-size: 22px;
   font-weight: bold;
   text-align: left;
-  color: #1c1e21; /* Dark text color */
+  color: #040505; /* Dark text color */
 }
 
 .container .title::before {
@@ -160,6 +175,8 @@ body {
 .container form .button input:hover {
   background: #0e5a8a; /* Darker blue color on hover */
 }
+
+
 
 @media (max-width: 584px) {
   .container {

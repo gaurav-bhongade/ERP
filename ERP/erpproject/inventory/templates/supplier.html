@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,14 +21,20 @@ body {
     justify-content: center;
     min-height: 100vh;
     margin: 0;
+    padding: 60px 20px;
+    background-image: url('{% static "/Images/inv1.jpg" %}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
 }
 
 nav {
   width: 100%;
-  height: 56px; /* Facebook navigation bar height */
+  height: 56px;
   padding: 0 20px;
   position: fixed;
-  background-color: #1877f2; /* Facebook blue color */
+  background-color: rgba(66, 103, 178, 0.8);
   top: 0;
   left: 0;
   right: 0;
@@ -71,14 +77,23 @@ nav li a:hover {
 }
 
 .container {
-    max-width: 700px;
+    max-width: 550px;
     width: 100%;
-    background: #fff;
-    padding: 25px;
+    background: rgba(111, 109, 109, 0.114);
+    padding: 25px 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-top: 80px; /* Adjusted margin-top to avoid overlap with the navbar */
+    margin: 20px 20px 20px auto; /* Adjusted margin for spacing and centered the container */
+    height: 85vh;
+    max-height: 80vh; /* Adjusted max-height */
+    overflow-y: auto; 
+    margin-left: auto;
 }
+
+.user-details{
+      height: 85vh;
+    }
 
 .container .title {
     font-size: 25px;
@@ -218,7 +233,7 @@ nav li a:hover {
 
 
   <div class="container">
-    <div class="title">Inventory Management System</div>
+    <div class="title">Enter Supplier Information</div>
     <form action="/supplier/" method="post">
 
       {% csrf_token %}

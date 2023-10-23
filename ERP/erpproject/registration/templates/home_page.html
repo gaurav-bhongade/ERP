@@ -1,7 +1,9 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <style>
@@ -13,24 +15,35 @@
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  background: #f0f2f5;
+    margin: 0;
+    padding: 60px 0 0; /* Added padding to the top to account for the height of the navigation bar */
+    padding-top: 90px;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    background: #f0f2f5;
+    background-image: url('{% static "/Images/erp1.jpg" %}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    height: 100vh; /* Set the height to 100% of the viewport height */
+    grid-template-columns: auto 25%;
+    display: grid;
 }
 
 nav {
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-  padding: 0 20px;
-  position: fixed;
-  background-color: #4267B2;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  z-index: 999;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 20px;
+    position: fixed;
+    background-color: rgba(66, 103, 178, 0.8);
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    z-index: 999;
 }
 
 nav .logo p {
@@ -73,72 +86,41 @@ nav li a:hover {
 }
 
 .container {
-  max-width: 800px;
-  width: 100%;
-  background: #fff;
-  padding: 25px 30px;
-  border-radius: 8px;
-  background-color: #ffffff;
-  margin: 80px auto 20px;
+    max-width: 800px;
+    width: 43%;
+    /* background: rgba(255, 255, 255, 0.8); */
+    padding: 25px 30px;
+    border-radius: 8px;
+    margin: 60px 20px 20px 20px;
+    float: left; /* Add this to float the container to the left */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+}
+
+.description {
+    font-size: 16px;
+    color: #606569;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Clear the float to prevent layout issues with subsequent elements */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }
 
 .container .title {
-  font-size: 28px;
-  font-weight: bold;
-  position: relative;
-  text-align: left;
-  color: #1c1e21;
+    font-size: 28px;
+    font-weight: bold;
+    color: #46484c;
+    margin-bottom: 20px;
 }
 
-.container .title::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 3px;
-  width: 30px;
-  background-color: #1877f2;
-}
 
-.container form {
-  display: flex;
-  flex-direction: column;
-}
-
-.container form .user-details {
-  margin: 20px 0;
-}
-
-.user-details .input-box,
-.marital-box {
-  margin-bottom: 15px;
-}
-
-.user-details .input-box .details,
-.marital-box .details {
-  display: block;
-  font-weight: 500;
-  margin-bottom: 2px;
-}
-
-.user-details .input-box input,
-.marital-box select.dd {
-  height: 45px;
-  width: 100%;
-  outline: none;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  padding-left: 15px;
-  font-size: 16px;
-  border-bottom-width: 2px;
-  transition: all 0.3s ease;
-}
-
-.user-details .input-box input:focus,
-.marital-box select.dd:focus,
-.marital-box select.dd:valid {
-  border-color: #1877f2;
-}
 
 form .button {
   height: 45px;
@@ -158,6 +140,15 @@ form .button input {
   background: #1877f2;
   cursor: pointer;
 }
+footer {
+            background-color:rgba(66, 103, 178, 0.8);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
 
 form .button input:hover {
   background: #0d6efd;
@@ -180,6 +171,7 @@ form .button input:hover {
   }
 }
 
+
 @media (max-width: 768px) {
   nav {
     padding: 0 10px;
@@ -196,6 +188,11 @@ form .button input:hover {
   form {
     margin-top: 60px;
   }
+
+  body {
+        grid-template-columns: auto; /* Switch to a single column layout on small screens */
+    }
+  
 }
 
   
@@ -214,6 +211,21 @@ form .button input:hover {
         </ul>
       </nav>
 
-    
+      <div class="container">
+        <div class="title">Inventory management System Content</div>
+        <div class="description">
+          Inventory management refers to the process of ordering, storing, using, and selling a company's inventory. This includes the management of raw materials, components, and finished products, as well as warehousing and processing of such items. There are different types of inventory management, each with its pros and cons, depending on a company’s needs
+            Inventory management is the entire process of managing inventories from raw materials to finished products.
+            Inventory management tries to efficiently streamline inventories to avoid both gluts and shortages.
+            Four major inventory management methods include just-in-time management (JIT), materials requirement planning (MRP),
+            economic order quantity (EOQ), and days sales of inventory (DSI).
+        </div>
+        </div>
+
+
+      <footer>
+        <p>&copy; 2023 Your Company | ERP System</p>
+    </footer>
+
 </body>
 </html>
