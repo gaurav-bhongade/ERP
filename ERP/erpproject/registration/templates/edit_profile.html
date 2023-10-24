@@ -63,9 +63,9 @@ nav li a:hover {
 
         body {
             margin-top: 75px;
-            padding: 0 20px; /* Adjusted padding */
+            padding: 50px 20px; /* Adjusted padding */
             background: #f0f2f5; /* Facebook background color */
-            background-image: url('{% static "/Images/profile2.jpg" %}');
+            background-image: url('{% static "/Images/profile1.jpg" %}');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -79,8 +79,8 @@ nav li a:hover {
             padding: 25px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Added box shadow */
-            margin: 60px 20px 20px 20px;
-            float: left;
+            margin: auto;
+            
         }
 
         .container .title {
@@ -103,7 +103,12 @@ nav li a:hover {
         .container form {
             display: flex;
             flex-direction: column;
+            
         }
+        .container form .user-details {
+       
+        color: #ddd;
+}
 
         .user-details .input-box,
         .marital-box {
