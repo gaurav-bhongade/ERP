@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'registration',
     'inventory',
+    'supplier',
 ]
 
 MIDDLEWARE = [
@@ -100,6 +101,8 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+
+
     {
         'NAME': 'registration.validators.MinimumLengthValidator',
         'OPTIONS': {
@@ -118,8 +121,12 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'registration.validators.SpecialCharacterValidator', 
     },
+
+
+
 ]
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -155,4 +162,13 @@ STATICFILES_DIRS = [
     ]
 STATIC_ROOT = 'staticfiles'
 
-AUTH_USER_MODEL = 'registration.CustomUser'  # Replace 'myapp' with the name of your app
+AUTH_USER_MODEL = 'registration.CustomUser' 
+# AUTH_USER_MODEL = 'supplier.CustomSupplierUser' 
+
+LOGIN_URL = 'login_supplier'
+LOGOUT_URL = 'logout_supplier' 
+LOGIN_REDIRECT_URL = 'home_supplier'
+
+
+
+AUTHENTICATION_BACKENDS = ['supplier.backends.CustomAuthenticationBackend']

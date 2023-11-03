@@ -1,0 +1,14 @@
+<!-- supplier/templates/login_supplier.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for message in messages %}
+        <div>{{ message }}</div>
+    {% endfor %}
+    <h2>Login</h2>
+    <form method="post" action="{% url 'login_supplier' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+{% endblock %}

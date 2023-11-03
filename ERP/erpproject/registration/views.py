@@ -3,19 +3,15 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.password_validation import validate_password
 from django.core.validators import EmailValidator
 from django.contrib.auth.models import User
-from django.db import IntegrityError
 from django.contrib.auth import logout
 from .validators import *
 from .models import CustomUser
-from django.shortcuts import render, redirect
 from django.core.exceptions import ValidationError as DjangoValidationError
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
-
-
-
-
+from django.contrib.auth.decorators import login_required
+from django.db import IntegrityError
 
 def index(request):
     return render(request, template_name='index.html')
@@ -187,14 +183,7 @@ def ForgotPasswordPage(request):
 
     return render(request, 'forgot_password.html', {"result": result})
 
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from django.core.exceptions import ValidationError as DjangoValidationError
-from django.db import IntegrityError
-from django.contrib.auth.password_validation import validate_password
 
-from .models import CustomUser  # Import your CustomUser model
 
 @login_required
 def edit_profile_view(request):
@@ -222,7 +211,7 @@ def edit_profile_view(request):
 
         user.save()
         messages.success(request, "Profile updated successfully!")
-        return redirect('index')  # Redirect to the user's profile page
+        return redirect('index')
     
     else:
         # Pre-fill the form with the user's current information

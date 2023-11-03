@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Profile</title>
-    <link rel="stylesheet" href="sign_up.css" />
     <style>
         * {
             margin: 0;
@@ -15,79 +14,79 @@
         }
 
         nav {
-  width: 100%;
-  height: 56px; /* Facebook navigation bar height */
-  padding: 0 20px;
-  position: fixed;
-  background-color: rgba(66, 103, 178, 0.8);
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 999;
-}
+            width: 100%;
+            height: 56px;
+            padding: 0 20px;
+            position: fixed;
+            background-color: rgba(66, 103, 178, 0.8);
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 999;
+        }
 
-nav .logo p {
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  cursor: pointer;
-}
+        nav .logo p {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+        }
 
-nav ul {
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
+        nav ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
 
-nav li {
-  list-style: none;
-}
+        nav li {
+            list-style: none;
+        }
 
-nav li a {
-  font-size: 16px;
-  text-transform: uppercase;
-  padding: 15px 20px; /* Increased padding */
-  color: white;
-  text-decoration: none;
-}
+        nav li a {
+            font-size: 16px;
+            text-transform: uppercase;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+        }
 
-nav li a:hover {
-  background-color: #166fe5; /* Darker blue on hover */
-  border-radius: 8px; /* Rounded corners on hover */
-}
+        nav li a:hover {
+            background-color: #166fe5;
+            border-radius: 8px;
+        }
 
         body {
             margin-top: 75px;
-            padding: 50px 20px; /* Adjusted padding */
-            background: #f0f2f5; /* Facebook background color */
+            padding: 50px 20px;
+            background: #f0f2f5;
             background-image: url('{% static "/Images/profile1.jpg" %}');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             height: 90vh;
-                }
+        }
 
         .container {
-            max-width: 600px; /* Adjusted max-width */
+            max-width: 600px;
             width: 100%;
             background: rgba(111, 109, 109, 0.114);
             padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Added box shadow */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin: auto;
-            
+
         }
 
         .container .title {
-            font-size: 28px; /* Slightly larger font size */
-            font-weight: 700; /* Bolder font weight */
+            font-size: 28px;
+            font-weight: 700;
             position: relative;
-            color: #1877f2; /* Facebook blue color */
+            color: #1877f2;
         }
 
         .container .title::before {
@@ -97,22 +96,23 @@ nav li a:hover {
             bottom: 0;
             height: 3px;
             width: 30px;
-            background-color: #1877f2; /* Facebook blue color */
+            background-color: #1877f2;
         }
 
         .container form {
             display: flex;
             flex-direction: column;
-            
+
         }
+
         .container form .user-details {
-       
-        color: #ddd;
-}
+
+            color: #ddd;
+        }
 
         .user-details .input-box,
         .marital-box {
-            margin-bottom: 20px; /* Increased margin */
+            margin-bottom: 20px;
         }
 
         .user-details .input-box .details,
@@ -120,16 +120,16 @@ nav li a:hover {
             display: block;
             font-weight: 500;
             margin-bottom: 2px;
-            color: #333; /* Darker text color */
+            color: #333;
         }
 
         .user-details .input-box input,
         .marital-box select.dd {
-            height: 50px; /* Increased height */
+            height: 50px;
             width: 100%;
             outline: none;
             border-radius: 5px;
-            border: 1px solid #ddd; /* Lighter border color */
+            border: 1px solid #ddd;
             padding-left: 15px;
             font-size: 16px;
             border-bottom-width: 2px;
@@ -143,7 +143,7 @@ nav li a:hover {
         }
 
         form .button {
-            height: 50px; /* Increased height */
+            height: 50px;
             margin: 20px 0;
         }
 
@@ -157,27 +157,30 @@ nav li a:hover {
             font-weight: 500;
             border-radius: 5px;
             letter-spacing: 1px;
-            background: linear-gradient(135deg, #1877f2, #1877f2); /* Facebook blue color */
+            background: linear-gradient(135deg, #1877f2, #1877f2);
             cursor: pointer;
             transition: background 0.3s ease;
         }
 
         form .button input:hover {
-            background: linear-gradient(-135deg, #166fe5, #166fe5); /* Darker blue on hover */
+            background: linear-gradient(-135deg, #166fe5, #166fe5);
         }
 
         @media (max-width: 584px) {
             .container {
                 max-width: 100%;
             }
+
             form .user-details .input-box {
                 margin-bottom: 15px;
                 width: 100%;
             }
+
             .container form .user-details {
                 max-height: 300px;
                 overflow-y: scroll;
             }
+
             .user-details::-webkit-scrollbar {
                 width: 0;
             }
@@ -187,20 +190,22 @@ nav li a:hover {
             nav {
                 padding: 0px 10px;
             }
+
             nav ul {
                 float: none;
                 text-align: center;
                 margin-top: 10px;
             }
+
             nav li {
                 display: block;
                 margin-bottom: 10px;
             }
+
             form {
                 margin-top: 75px;
             }
         }
-
     </style>
 </head>
 
@@ -213,15 +218,12 @@ nav li a:hover {
         <ul>
             <li><a href="/home/">Home</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
-            <!-- <li><a href="/edit_profile/">Edit Profile</a></li> -->
         </ul>
     </nav>
     <div class="container">
         <div class="title">Edit Profile</div>
-        <!-- <h2>Edit Profile</h2> -->
         <form method="post">
             {% csrf_token %}
-            <!-- Display error messages here if any -->
             <div>
                 {% for message in messages %}
                 <p>{{ message }}</p>
@@ -254,7 +256,7 @@ nav li a:hover {
                         <option value="BA">BA</option>
                         <option value="MBA">MBA</option>
                     </select>
-                  </div>
+                </div>
 
                 <!-- <div class="input-box">
                     <span class="details">Qualification</span>

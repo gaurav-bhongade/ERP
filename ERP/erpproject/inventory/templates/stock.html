@@ -14,41 +14,42 @@
     }
 
     body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
 
-body {
-    background-color: #f0f2f5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    padding: 60px 20px; /* Added padding to the top and sides */
-    background-image: url('{% static "/Images/inv1.jpg" %}');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-}
+    body {
+      background-color: #f0f2f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 60px 20px;
+      /* Added padding to the top and sides */
+      background-image: url('{% static "/Images/inv1.jpg" %}');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+    }
 
-nav {
-    width: 100%;
-    height: 56px;
-    padding: 0 20px;
-    position: fixed;
-    background-color: rgba(66, 103, 178, 0.8);
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 999;
-}
+    nav {
+      width: 100%;
+      height: 56px;
+      padding: 0 20px;
+      position: fixed;
+      background-color: rgba(66, 103, 178, 0.8);
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+    }
 
     nav .logo p {
       font-size: 24px;
@@ -86,18 +87,18 @@ nav {
     }
 
     .container {
-    max-width: 550px;
-    width: 100%;
-    background: rgba(111, 109, 109, 0.114);
-    padding: 25px 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 20px 20px 20px auto; 
-    height: 85vh;
-    max-height: 80vh;
-    overflow-y: auto; 
-    margin-left: auto;
-}
+      max-width: 550px;
+      width: 100%;
+      background: rgba(111, 109, 109, 0.114);
+      padding: 25px 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 20px 20px 20px auto;
+      height: 85vh;
+      max-height: 80vh;
+      overflow-y: auto;
+      margin-left: auto;
+    }
 
     .container .title {
       font-size: 25px;
@@ -105,7 +106,8 @@ nav {
       position: relative;
       color: #3b5998;
     }
-    .user-details{
+
+    .user-details {
       height: 85vh;
     }
 
@@ -315,14 +317,14 @@ nav {
             {% endfor %}
           </select>
         </div>
-        
+
         <div class="button">
           <input type="submit" value="Click to Submit">
         </div>
       </div>
-        
+
     </form>
-  
+
   </div>
 </body>
 
