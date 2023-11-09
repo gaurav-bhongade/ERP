@@ -1,13 +1,58 @@
 {% extends 'base.html' %}
+<title>{% block title %}Sign up{% endblock %}</title>
+
+{% block nav_buttons %}
+    <li><a href="{% url 'login_supplier' %}">Login</a></li>
+{% endblock %}
 
 {% block content %}
 {% for message in messages %}
         <div>{{ message }}</div>
     {% endfor %}
-  <h2>Signup</h2>
-  <form method="post" action="{% url 'signup_supplier' %}">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign Up</button>
-  </form>
+
+    <div class="container">
+      <div class="title">Signup Here</div>
+  
+      <form action="/signup_supplier/" method="post">
+          {% csrf_token %}
+  
+          {% for message in messages %}
+              <div>{{ message }}</div>
+          {% endfor %}
+          
+  
+          <div class="user-details">
+              <div class="input-box">
+                  <span class="details">Email<span style="color: red"> *</span></span>
+                  <input type="email" placeholder="Enter Your Email" name="email" id="id_email" required />
+              </div>
+
+              <div class="input-box">
+                  <span class="details">Name<span style="color: red"> *</span></span>
+                  <input type="text" placeholder="Enter Your Name" name="name" id="id_name" required />
+              </div>
+
+              <div class="input-box">
+                  <span class="details">Address<span style="color: red"> *</span></span>
+                  <input type="text" placeholder="Enter Your Address" name="address" id="id_address" required />
+              </div>
+  
+  
+              <div class="input-box">
+                  <span class="details">Password<span style="color: red"> *</span></span>
+                  <input type="password" placeholder="Enter Password" id="id_password1" name="password1" required />
+              </div>
+  
+              <div class="input-box">
+                  <span class="details">Confirm Password<span style="color: red"> *</span></span>
+                  <input type="password" placeholder="Enter Confirm Password" id="id_password2" name="password2" required />
+              </div>
+  
+          </div>
+          <div class="button">
+              <input type="submit" value="Register" />
+          </div>
+      </form>
+  </div>
+
 {% endblock %}

@@ -1,5 +1,7 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Stock,Supplier
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Stock, Supplier, Order
+from .forms import OrderForm
+from django.contrib import messages
 
 # Create your views here.
 def home_page(request):
@@ -98,3 +100,55 @@ def supplier_with_stock(request):
 def stock_control(request):
     stocks = Stock.objects.all()
     return render(request, template_name="stock_control.html", context={'stocks': stocks})
+
+def place_order(request, stock_id):
+    stock = Stock.objects.get(pk=stock_id)
+
+    if request.method == "POST":
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order_quantity = form.cleaned_data['order_quantity']
+
+            Order.objects.create(stock=stock, order_quantity=order_quantity, is_confirmed=False)
+
+            return redirect('stock_control')
+    else:
+        form = OrderForm()
+
+    return render(request, 'place_order.html', {'form': form, 'stock': stock})
+
+
+def order_confirmation(request):
+    unconfirmed_orders = Order.objects.filter(is_confirmed=False).order_by('-id')
+
+    if unconfirmed_orders.exists():
+        if request.method == "POST":
+            order_id = request.POST.get('order_id')
+            current_order = get_object_or_404(Order, id=order_id, is_confirmed=False)
+            
+            action = request.POST.get('action')
+            if action == 'accept':
+                stock = current_order.stock
+                stock.maxqty_required += current_order.order_quantity
+                stock.save()
+
+                current_order.is_confirmed = True
+                current_order.save()
+
+                messages.info(request, 'Order confirmed.')
+                return redirect('order_confirmation')
+            elif action == 'cancel':
+                current_order.delete()
+                messages.info(request, 'Order has been canceled.')
+                return redirect('order_confirmation')
+
+        return render(request, 'order_confirmation.html', {'orders': unconfirmed_orders})
+
+    messages.info(request, 'No orders available.')
+    return redirect('home_supplier')
+
+
+
+def show_orders(request):
+    orders = Order.objects.filter(is_confirmed=True)
+    return render(request, 'show_orders.html', {'orders': orders})

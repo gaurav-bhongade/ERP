@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,51 +20,55 @@
         }
 
         nav {
-  width: 100%;
-  height: 56px; /* Facebook navigation bar height */
-  padding: 0 20px;
-  position: fixed;
-  background-color: rgba(66, 103, 178, 0.8);
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 999;
-}
+            width: 100%;
+            height: 56px;
+            /* Facebook navigation bar height */
+            padding: 0 20px;
+            position: fixed;
+            background-color: rgba(66, 103, 178, 0.8);
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 999;
+        }
 
-nav .logo p {
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  cursor: pointer;
-}
+        nav .logo p {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+        }
 
-nav ul {
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
+        nav ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
 
-nav li {
-  list-style: none;
-}
+        nav li {
+            list-style: none;
+        }
 
-nav li a {
-  font-size: 16px;
-  text-transform: uppercase;
-  padding: 15px 20px; /* Increased padding */
-  color: white;
-  text-decoration: none;
-}
+        nav li a {
+            font-size: 16px;
+            text-transform: uppercase;
+            padding: 15px 20px;
+            /* Increased padding */
+            color: white;
+            text-decoration: none;
+        }
 
-nav li a:hover {
-  background-color: #166fe5; /* Darker blue on hover */
-  border-radius: 8px; /* Rounded corners on hover */
-}
+        nav li a:hover {
+            background-color: #166fe5;
+            /* Darker blue on hover */
+            border-radius: 8px;
+            /* Rounded corners on hover */
+        }
 
         h2 {
             color: #333;
@@ -76,13 +81,14 @@ nav li a:hover {
             margin-top: 20px;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            align-items: center;
         }
 
         th,
         td {
             border: 1px solid #ddd;
             padding: 8px;
-            text-align: left;
+            text-align: center;
         }
 
         th {
@@ -102,19 +108,47 @@ nav li a:hover {
             font-weight: bold;
             color: #006400;
         }
+
+        button {
+            background-color: #166fe5;
+            color: white;
+            border: none;
+            padding: 10px 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button a {
+            text-decoration: none;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #1257c1;
+            /* Darker blue on hover */
+        }
+
+        a:hover {
+            color: #ff8c69;
+        }
     </style>
 </head>
 
 <nav>
     <div class="logo">
-      <p>inventory management system</p>
+        <p>inventory management system</p>
     </div>
     <ul>
-      <li><a href="/home/">Home</a></li>
+        <li><a href="/home/">Home</a></li>
     </ul>
-  </nav>
+</nav>
+
 <body>
     <h2>Stock Control</h2>
+    {% for message in messages %}
+    <span>{{ message }}</span>
+    {% endfor %}
     <table>
         <thead>
             <tr>
@@ -124,6 +158,7 @@ nav li a:hover {
                 <th>Reorder Level</th>
                 <th>Stock Level</th>
                 <th>Reorder</th>
+                <th>Place Order</th>
             </tr>
         </thead>
         {% for stock in stocks %}
@@ -134,11 +169,20 @@ nav li a:hover {
                 <td>{{stock.cost_per_unit}}</td>
                 <td>{{stock.minqty_required}}</td>
                 <td>{{stock.maxqty_required}}</td>
-                <td class="{% if stock.maxqty_required < stock.minqty_required %}reorder-yes{% else %}reorder-no{% endif %}">{% if stock.maxqty_required < stock.minqty_required %}Yes{% else %}No{% endif %}</td>
+                <td
+                    class="{% if stock.maxqty_required < stock.minqty_required %}reorder-yes{% else %}reorder-no{% endif %}">
+                    {% if stock.maxqty_required < stock.minqty_required %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <button><a href="{% url 'place_order' stock.id %}">Order Now</a></button>
+
+                </td>
+
             </tr>
-            
+
         </tbody>
         {% endfor %}
     </table>
+
 </body>
+
 </html>

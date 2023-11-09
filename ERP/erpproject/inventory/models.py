@@ -65,3 +65,14 @@ class Supplier(models.Model):
     
     def __repr__(self):
         return str(self)
+    
+class Order(models.Model):
+    stock = models.ForeignKey(Stock, on_delete=models.CASCADE)
+    order_quantity = models.IntegerField()
+    is_confirmed = models.BooleanField(default=False)  # Add this line
+
+    class Meta:
+        db_table = "order_master"
+
+    def __str__(self):
+        return f'{self.stock.name} - {self.order_quantity} units'

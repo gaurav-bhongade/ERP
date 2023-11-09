@@ -1,14 +1,55 @@
-<!-- supplier/templates/login_supplier.html -->
 {% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Log in{% endblock %}</title>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+{% block nav_buttons %}
+<li><a href="{% url 'signup_supplier' %}">Signup</a></li>
+{% endblock %}
 
 {% block content %}
-    {% for message in messages %}
-        <div>{{ message }}</div>
-    {% endfor %}
-    <h2>Login</h2>
-    <form method="post" action="{% url 'login_supplier' %}">
+
+
+<div class="container">
+    <div class="title">Login Here</div>
+
+    <form action="/login_supplier/" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
+
+        {% for message in messages %}
+            <div>{{ message }}</div>
+        {% endfor %}
+        
+
+        <div class="user-details">
+            <div class="input-box">
+                <span class="details">email<span style="color: red"> *</span></span>
+                <input type="email" placeholder="Enter Your Email" name="username" id="id_username" required />
+            </div>
+
+
+            <div class="input-box">
+                <span class="details">password<span style="color: red"> *</span></span>
+                <input type="password" placeholder="Enter Password" id="id_password" name="password" required />
+            </div>
+
+        </div>
+        <div class="button">
+            <input type="submit" value="Click to Login" />
+        </div>
     </form>
+</div>
+
 {% endblock %}

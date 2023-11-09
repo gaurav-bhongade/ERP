@@ -19,6 +19,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -101,7 +102,8 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
@@ -110,53 +112,59 @@
         th {
             background-color: #f2f2f2;
         }
+
+        a:hover {
+            color: #ff8c69;
+        }
     </style>
 </head>
+
 <body>
 
     <nav>
         <div class="logo">
-          <p>inventory management system</p>
+            <p>inventory management system</p>
         </div>
         <ul>
-          <li><a href="/home/">Home</a></li>
+            <li><a href="/home/">Home</a></li>
         </ul>
-      </nav><br><br><br><br>
+    </nav><br><br><br><br>
 
     <h2>{{ stock.name }}</h2>
-    
+
     <table>
         <tbody>
-                
-                <tr>
-                    <th>Description</th>
-                    <td>{{ stock.description }}</td>
-                </tr>
-                <tr>
-                    <th>Min Quentity req</th>
-                    <td>{{ stock.minqty_required }}</td>
-                </tr>
-                <tr>
-                    <th>Max Quentity req</th>
-                    <td>{{ stock.maxqty_required }}</td>
-                </tr>
-                <tr>
-                    <th>Cost</th>
-                    <td>{{ stock.cost_per_unit }}</td>
-                </tr>
-                <tr>
-                    <th>Usage Level</th>
-                    <td>{{ stock.usage_level }}</td>
-                </tr>
-                <tr>
-                    <th>Reorder Duration</th>
-                    <td>{{ stock.reorder_duration }}</td>
-                </tr>
-                <tr>
-                    <th>Supplier ID</th>
-                    <td>{{ stock.supplier_id_id }}</td>
-                </tr>
+
+            <tr>
+                <th>Description</th>
+                <td>{{ stock.description }}</td>
+            </tr>
+            <tr>
+                <th>Min Quentity req</th>
+                <td>{{ stock.minqty_required }}</td>
+            </tr>
+            <tr>
+                <th>Max Quentity req</th>
+                <td>{{ stock.maxqty_required }}</td>
+            </tr>
+            <tr>
+                <th>Cost</th>
+                <td>{{ stock.cost_per_unit }}</td>
+            </tr>
+            <tr>
+                <th>Usage Level</th>
+                <td>{{ stock.usage_level }}</td>
+            </tr>
+            <tr>
+                <th>Reorder Duration</th>
+                <td>{{ stock.reorder_duration }}</td>
+            </tr>
+            <tr>
+                <th>Supplier ID</th>
+                <td>{{ stock.supplier_id_id }}</td>
+            </tr>
         </tbody>
     </table>
 </body>
+
 </html>

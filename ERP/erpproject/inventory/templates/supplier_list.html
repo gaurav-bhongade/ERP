@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,10 +16,24 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        body,
+        html {
+            height: 100%;
+        }
+
         body {
-            background-color: #f4f4f4;
             margin: 0;
-            padding: 0;
+            padding: 60px 0 0;
+            /* Added padding to the top to account for the height of the navigation bar */
+            padding-top: 90px;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            background: whitesmoke;
+            /* background-image: url('{% static "/Images/vendor.png" %}'); */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
         }
 
         nav {
@@ -132,36 +147,42 @@
 
         h2 {
             color: #333;
-            margin: 80px 20px 20px;
+            margin: 20px;
         }
 
         table {
-            width: 45%;
-            border-collapse: collapse;
-            margin: 20px;
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    width: 95%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    align-items: center;
+}
 
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
 
-        th {
-            background-color: #f2f2f2;
-        }
+th {
+    background-color: rgba(113, 148, 219, 0.8);
+}
 
-        tbody tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9; /* Lighter color for odd rows */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #e6e6e6; /* Slightly darker color for even rows */
+}
 
         a {
             text-decoration: none;
             color: #333;
             font-weight: bold;
+            font-size: medium;
         }
 
         a:hover {
@@ -203,11 +224,25 @@
 
     <div id="search-results">
         <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Location</th>
+                    <th>Contact Number</th>
+                    <th>GST Number</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
             <tbody>
                 {% for supplier in suppliers %}
                 <tr>
-                    <th>Name</th>
                     <td><a href="{% url 'supplier_detail' supplier.id %}">{{ supplier.name }}</a></td>
+                    <td>{{ supplier.address }}</td>
+                    <td>{{ supplier.location }}</td>
+                    <td>{{ supplier.contact }}</td>
+                    <td>{{ supplier.gst_no }}</td>
+                    <td>{{ supplier.rating }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

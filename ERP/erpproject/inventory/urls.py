@@ -30,7 +30,15 @@ urlpatterns = [
     path('home/{/supplier_stock/}', supplier_with_stock),
     path('supplier_stock/', supplier_with_stock),
 
+    path('stock-control/', stock_control, name='stock_control'),
 
-    path('stock-control/', stock_control)
+    path('place_order/<int:stock_id>/', place_order, name='place_order'),
+
+    # path('order_confirmation/<int:stock_id>/<int:order_quantity>/', order_confirmation, name='order_confirmation'),
+
+    path('order_confirmation/', order_confirmation, name='order_confirmation'),
+
+    path('show_orders/', show_orders, name='show_orders'),
+
   
     ]
